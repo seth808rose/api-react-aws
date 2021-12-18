@@ -5,12 +5,12 @@ const Beers = ({ beers, removeItem }) => {
   return (
     <section>
       <div className='title'>
-        <h2>got beers</h2>
+        <h2>got beer?</h2>
         <div className='underline'></div>
       </div>
       <div>
         {beers.map((beer) => {
-          return <Beer key={beer.id}{...beer} removeItem={removeItem}></Beer>;
+          return <Beer key={beer.id} {...beer} removeItem={removeItem}></Beer>;
         })}
       </div>
     </section>

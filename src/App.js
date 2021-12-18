@@ -5,11 +5,10 @@ import Beers from "./Beers";
 
 const url = "https://api.punkapi.com/v2/beers";
 
-
 function App() {
   const [loading, setLoading] = useState(true);
   const [beers, setBeers] = useState([]);
-
+  const [footer, setFooter] = useState(true);
 
   // function for remove button for beer selection
   const removeItem = (id) => {
