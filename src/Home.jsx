@@ -5,8 +5,8 @@ const Home = () => {
     <div className='home-p'>
       <p>
         Hello and welcome to my beer api project. Tools used for this project
-        are Reactjs as the frontend and AWS for the backend. AWS is used for
-        hosting and authentication. At the bottle of the 'Beer API' section,
+        are Reactjs as the frontend and AWS Amplify for the backend. Amplify is used for
+        hosting and authentication. At the bottom of the 'Beer API' section,
         you'll find a button that has the 'scroll to top' functionality which
         was pretty fun in it of itself. I also used 'react-router' for page
         routing etc.I wanted to showcase my skills by calling a random API url
