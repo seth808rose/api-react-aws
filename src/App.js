@@ -1,51 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Home";
 import "./index.css";
-import Loading from "./Loading";
-import Beers from "./Beers";
+import Main from "./Main";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Amplify } from "aws-amplify";
+import "@aws-amplify/ui-react/styles.css";
+import awsExports from "./aws-exports";
 
-const url = "https://api.punkapi.com/v2/beers";
+Amplify.configure(awsExports);
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  const [beers, setBeers] = useState([]);
-  const [footer, setFooter] = useState(true);
-
-  // function for remove button for beer selection
-  const removeItem = (id) => {
-    const newItem = beers.filter((beer) => beer.id !== id);
-    setBeers(newItem);
-  };
-
-  const fetchBeers = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      const beers = await response.json();
-      setLoading(false);
-      setBeers(beers);
-      // console.log(beers);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchBeers();
-  }, []);
-
-  if (loading) {
-    return (
-      <main>
-        <Loading />
-      </main>
-    );
-  }
+const App = ({ signOut }) => {
   return (
-    <main>
-      <Beers beers={beers} removeItem={removeItem} />
-    </main>
+    <Router>
+      <>
+        <h1>Hello</h1>
+        <div className='signout-button'>
+          <button className='btn' onClick={signOut}>
+            Sign out
+          </button>
+        </div>
+      </>
+      <nav className='navbar'>
+        <Link to='/' className='navbar-link'>
+          Home
+        </Link>
+        <Link to='/Main' className='navbar-link'>
+          Beer API
+        </Link>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/Main' element={<Main />}></Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
-export default App;
+export default withAuthenticator(App);
