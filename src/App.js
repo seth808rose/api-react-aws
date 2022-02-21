@@ -15,11 +15,6 @@ const App = ({ signOut }) => {
     <Router>
       <>
         <h1>Hello</h1>
-        <div className='signout-button'>
-          <button className='btn' onClick={signOut}>
-            Sign out
-          </button>
-        </div>
       </>
       <nav className='navbar'>
         <Link to='/' className='navbar-link'>
@@ -29,6 +24,13 @@ const App = ({ signOut }) => {
           Beer API
         </Link>
       </nav>
+      <footer>
+        <div className='signout-button'>
+          <button className='btn' onClick={signOut}>
+            Sign out
+          </button>
+        </div>
+      </footer>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/Main' element={<Main />}></Route>
